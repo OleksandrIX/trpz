@@ -1,0 +1,25 @@
+img{
+    width: 200px;
+    height: 250px;
+}
+
+.details{
+    text-decoration: none;
+    padding-left: 90%;
+}
+
+.section_book {
+    display: flex;
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px;
+    border-top: 1px solid #bdbdbd;
+    border-bottom: 1px solid #bdbdbd;
+}
+.section_book_text {
+    margin: 0 20px;
+}
+.section_book_text p {
+    text-indent: 25px;
+    text-align: justify;
+}

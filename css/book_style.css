@@ -1,0 +1,96 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.book {
+    border-bottom: 2px solid rgba(30, 85, 151, 0.98);
+    display: flex;
+    height: 180px;
+}
+
+.book .name-book {
+    margin-left: 10px;
+}
+
+.book .name-book p {
+    font-size: 22px;
+}
+
+.book .name-cadet {
+    margin-left: 55%;
+    text-align: right;
+}
+
+.book .name-cadet h4 {
+    color: rgba(22, 204, 0, 0.98);
+}
+
+.book .name-cadet p {
+    font: italic 15px "Times New Roman";
+}
+
+.book div {
+    margin-top: 35px;
+    justify-content: center;
+}
+
+.book img {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.book img {
+    width: 100px;
+    height: 150px;
+}
+
+.description-book{
+    border-bottom: 2px solid rgba(30, 85, 151, 0.98);
+}
+
+.description-book p {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.description-book .details{
+    margin-left: 90%;
+    color: rgba(22, 204, 0, 0.98);
+}
+
+.author-book{
+    display: flex;
+    border-bottom: 2px solid rgba(30, 85, 151, 0.98);
+}
+
+.details-author{
+    flex-direction: column;
+}
+
+.author-book img{
+    margin: 10px;
+    width: 150px;
+}
+
+.author-book h3{
+    width: 500px;
+    margin-left: 10px;
+}
+
+.author-book .details{
+    margin-left: 90%;
+    color: rgba(22, 204, 0, 0.98);
+}
+
+.zmist-book h2 {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: 200;
+    color: brown;
+}
+
+.zmist-book h3 {
+    margin-left: 30px;
+    color: rgba(30, 85, 151, 0.98);
+}

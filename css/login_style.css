@@ -1,0 +1,36 @@
+.container{
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 400px;
+    height: 300px;
+    border: 1px solid gray;
+}
+
+.head{
+    background-color: #5e93ff;
+    color: white;
+    text-align: center;
+    width: 399px;
+}
+
+.main{
+    padding-top: 60px;
+    justify-content: center;
+}
+.lbl-user, .lbl-password{
+    padding-left: 20px;
+}
+
+.inp-user{
+    width: 235px;
+    margin-left: 30px;
+}
+.inp-password{
+    width: 235px;
+    margin-left: 58px;
+}
+.btn-login{
+    margin-top: 10px;
+    margin-left: 320px;
+}
