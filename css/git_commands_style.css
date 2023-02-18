@@ -1,0 +1,17 @@
+.commands {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.commands h2{
+    margin-bottom: 3vh;
+}
+.commands h3{
+    margin-bottom: 3vh;
+}
+.commands p{
+    margin-bottom: 1vh;
+}
