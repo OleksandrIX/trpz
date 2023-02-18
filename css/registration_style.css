@@ -1,0 +1,29 @@
+.main{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.container-reg {
+    width: 25vw;
+    border: 1px solid #000;
+}
+
+.container-reg h1{
+    text-align: center;
+    color: white;
+    background-color: #5e93ff;
+}
+
+.lbl{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+.inp{
+    margin-top: 5px;
+    height: 25px;
+}
+.btn{
+    margin: 10px 10px 10px 16.8vw;
+}
