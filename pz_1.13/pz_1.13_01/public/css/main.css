@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    background-color: #5e93ff;
+    font-family: "Arial", sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.container div h1{
+    text-align: center;
+}
+
+.input-container, .result-container {
+    width: 400px;
+    height: 600px;
+    background-color: white;
+    border: 2px solid black;
+}

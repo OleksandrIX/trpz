@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    background-color: #6b3fc0;
+    font-family: Arial, sans-serif;
+}
+
+h4 {
+    margin: 10px 5px;
+}
+
+li {
+    margin-left: 5px;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.start {
+    height: 50px;
+    width: 50px;
+    fill: #05e805;
+}
+
+.start.hover {
+    cursor: pointer;
+}
+
+.log-container {
+    width: 40vw;
+    height: 90vh;
+    background-color: aliceblue;
+    overflow-y: auto;
+}
+
+.number-container {
+    background-color: aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 500px;
+    padding: 10px;
+}
+
+.btn {
+    border: 1px solid black;
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+}
+
+.btn.hover {
+    cursor: pointer;
+}
