@@ -1,0 +1,52 @@
+body{
+    background: #243862;
+}
+
+.container-bnt{
+    display: flex;
+    justify-content: space-around;
+}
+
+.container-bnt button {
+    width: 7vw;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    border: 0;
+    border-radius: 3px;
+    background-color: #5e93ff;
+    color: #fff;
+}
+
+.container-bnt button:hover {
+    background-color: #6993d8;
+}
+
+.result{
+    height: 80vh;
+    margin: 30px 50px 10px;
+    border: 1px solid #000;
+    background-color: #878585;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #5e93ff;
+    border-radius: 10px;
+}
+
+.result li{
+    margin: 10px;
+    background-color: #878585;
+}
+
+.draw-window{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
