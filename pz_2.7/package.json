@@ -1,0 +1,13 @@
+{
+  "name": "pz_2.7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "task1": "node pz_2.7_01.js",
+    "task2": "node pz_2.7_02.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
