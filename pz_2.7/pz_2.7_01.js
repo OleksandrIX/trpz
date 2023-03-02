@@ -5,8 +5,6 @@ const {stdin: input, stdout: output} = require("node:process");
 
 const rl = readline.createInterface({input, output});
 
-let isFileExist = false;
-
 function askPath() {
     rl.question('Введіть шлях до csv-файлу:', (answer) => {
         if (path.extname(answer) !== '.csv') {

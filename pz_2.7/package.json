@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "task1": "node pz_2.7_01.js",
-    "task2": "node pz_2.7_02.js"
+    "task2": "node pz_2.7_02/pz_2.7_02.js"
   },
   "keywords": [],
   "author": "",
