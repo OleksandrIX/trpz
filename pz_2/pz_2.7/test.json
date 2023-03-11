@@ -1,0 +1,23 @@
+[
+  {
+    "name": "sasha",
+    "age": "20",
+    "city": "kiev",
+    "address": "dsaads",
+    "email": "ads@asd.ads"
+  },
+  {
+    "name": "dima",
+    "age": "19",
+    "city": "kiev",
+    "address": "",
+    "email": "ads@asd.ads"
+  },
+  {
+    "name": "sany",
+    "age": "",
+    "city": "kiev",
+    "address": "dsaads",
+    "email": "ads@asd.ads"
+  }
+]
