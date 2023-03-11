@@ -1,0 +1,24 @@
+{
+  "name": "pz_3.2",
+  "version": "1.0.0",
+  "description": "This Projects pz_3.2",
+  "main": "",
+  "scripts": {
+    "start-task-1": "node pz_3.2_01/app.js",
+    "start-task-2": "node pz_3.2_02/app.js",
+    "dev-task-1": "nodemon pz_3.2_01/app.js",
+    "dev-task-2": "nodemon pz_3.2_02/app.js"
+  },
+  "keywords": [],
+  "author": "Oleksandr",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "ejs-mate": "^4.0.0",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
