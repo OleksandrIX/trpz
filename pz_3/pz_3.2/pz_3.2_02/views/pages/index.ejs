@@ -1,0 +1,11 @@
+<% layout('layouts/main') -%>
+
+<div class="main-index">
+    <form class="auth" action="/exam" method="post">
+        <label for="name">Ім'я: </label>
+        <input id="name" name="name" type="text" placeholder="Ім'я">
+        <label for="surname">Прізвище:</label>
+        <input id="surname" name="surname" type="text" placeholder="Прізвище">
+        <input class="button" id="start-test" type="submit" value="Розпочати тест">
+    </form>
+</div>

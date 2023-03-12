@@ -1,0 +1,65 @@
+<% layout('layouts/main') -%>
+
+<div class="main-test">
+    <p class="user">
+        Вітаємо, <%= user?.name %> <%= user?.surname %>
+        <br>
+        <b>Тест</b>
+    </p>
+    <form action="/exam/result" method="post">
+        <input name="name" type="hidden" value="<%= user?.name %>">
+        <input name="surname" type="hidden" value="<%= user?.surname %>">
+        <div class="wrapper">
+            <% for(let i = 1; i <= keysQuestions.length; i++){ %>
+                <% const question = questions[keysQuestions[i - 1]] %>
+                <div class="wrapper-question">
+                    <p class="question">
+                        Запитання <%= i %>
+                        <br>
+                        <i><%= question.text %></i>
+                    </p>
+                    <div class="radio-groups">
+                        <div class="radio-group">
+                            <input class="radio-custom" id="a-<%= i %>" name="<%= keysQuestions[i - 1] %>" type="radio"
+                                   value="a">
+                            <label class="radio-custom-label" for="a-<%= i %>">
+                                a. <%= question.a %> </label>
+                        </div>
+                        <div class="radio-group">
+                            <input class="radio-custom" id="b-<%= i %>" name="<%= keysQuestions[i - 1] %>" type="radio"
+                                   value="b">
+                            <label class="radio-custom-label" for="b-<%= i %>">
+                                b. <%= question.b %></label>
+                        </div>
+                        <div class="radio-group">
+                            <input class="radio-custom" id="c-<%= i %>" name="<%= keysQuestions[i - 1] %>" type="radio"
+                                   value="c">
+                            <label class="radio-custom-label" for="c-<%= i %>">
+                                c. <%= question.c %></label>
+                        </div>
+                        <div class="radio-group">
+                            <input class="radio-custom" id="d-<%= i %>" name="<%= keysQuestions[i - 1] %>" type="radio"
+                                   value="d">
+                            <label class="radio-custom-label" for="d-<%= i %>">
+                                d. <%= question.d %></label>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            <input class="button complete-test" type="submit" value="Завершити тест">
+        </div>
+    </form>
+</div>
+
+<script>
+    let user = '<%- JSON.stringify(user) %>';
+    user = JSON.parse(user);
+    if (user.name !== '' && user.surname !== '') {
+        localStorage.setItem("user", JSON.stringify(user));
+    }
+</script>
+<script>
+    if (!localStorage.getItem('user')) {
+        window.location.href = '/';
+    }
+</script>

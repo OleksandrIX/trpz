@@ -1,0 +1,66 @@
+<% layout('layouts/main') -%>
+
+<div class="main-test">
+    <p class="user">
+        <%= user?.name %> <%= user?.surname %>
+        <br>
+        Загальна кількість запитань: <%= Object.keys(answers).length %>
+        <br>
+        Правильних відповідей: <%= numberCorrectAnswers %>
+    </p>
+
+    <div class="wrapper">
+        <% const keysQuestions = Object.keys(allQuestions); %>
+        <% for(let i = 1; i <= keysQuestions.length; i++){ %>
+            <% const simpleQuestion = allQuestions[keysQuestions[i - 1]] %>
+            <div class="wrapper-question">
+                <p class="question">
+                    Запитання <%= i %>
+                    <br>
+                    <i class="<%= resultAnswer[keysQuestions[i - 1]] ? 'green' : 'red' %>"><%= simpleQuestion.text %></i>
+                </p>
+                <div class="radio-groups">
+                    <div class="radio-group">
+                        <input class="radio-custom"
+                               id="a-<%= i %>" name="<%= keysQuestions[i - 1] %>" type="radio"
+                               value="a" <%= questions[keysQuestions[i - 1]] === 'a' ? 'checked' : '' %>>
+                        <label class="radio-custom-label <%= answers[keysQuestions[i - 1]] === 'a' ? 'green' : questions[keysQuestions[i - 1]] === 'a' ? 'blue' : '' %>"
+                               for="a-<%= i %>">
+                            a. <%= simpleQuestion.a %> </label>
+                    </div>
+                    <div class="radio-group">
+                        <input class="radio-custom" id="b-<%= i %>" name="<%= keysQuestions[i - 1] %>" type="radio"
+                               value="b" <%= questions[keysQuestions[i - 1]] === 'b' ? 'checked' : '' %>>
+                        <label class="radio-custom-label <%= answers[keysQuestions[i - 1]] === 'b' ? 'green' : questions[keysQuestions[i - 1]] === 'b' ? 'blue' : '' %>"
+                               for="b-<%= i %>">
+                            b. <%= simpleQuestion.b %></label>
+                    </div>
+                    <div class="radio-group">
+                        <input class="radio-custom" id="c-<%= i %>" name="<%= keysQuestions[i - 1] %>" type="radio"
+                               value="c" <%= questions[keysQuestions[i - 1]] === 'c' ? 'checked' : '' %>>
+                        <label class="radio-custom-label <%= answers[keysQuestions[i - 1]] === 'c' ? 'green' : questions[keysQuestions[i - 1]] === 'c' ? 'blue' : '' %>"
+                               for="c-<%= i %>">
+                            c. <%= simpleQuestion.c %></label>
+                    </div>
+                    <div class="radio-group">
+                        <input class="radio-custom" id="d-<%= i %>" name="<%= keysQuestions[i - 1] %>" type="radio"
+                               value="d" <%= questions[keysQuestions[i - 1]] === 'd' ? 'checked' : '' %>>
+                        <label class="radio-custom-label <%= answers[keysQuestions[i - 1]] === 'd' ? 'green' : questions[keysQuestions[i - 1]] === 'd' ? 'blue' : '' %>"
+                               for="d-<%= i %>">
+                            d. <%= simpleQuestion.d %></label>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        <form class="redirect-form" action="/" method="get">
+            <input class="button redirect-main-page" type="submit" onclick="redirectMainPage()" value="Перейти на головну сторінку">
+        </form>
+    </div>
+
+</div>
+
+<script>
+    async function redirectMainPage() {
+        await localStorage.removeItem('user');
+    };
+</script>
