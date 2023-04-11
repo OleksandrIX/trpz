@@ -1,0 +1,21 @@
+<% layout('layouts/MilitaryUnit.ejs') -%>
+<link rel="stylesheet" href="/public/css/icon.css">
+<div class="back icon">
+    <button class="back-arrow icon"
+            onclick="history.back();">
+    </button>
+</div>
+
+<div class="add icon">
+    <button class="add-plus icon"
+            onclick="location.href = '/military-units/<%= militaryUnit.id %>/units/create';">
+    </button>
+</div>
+
+<h2 class="mb-3">Система обліку особового складу в в/ч: <%= militaryUnit.name %></h2>
+
+<%for(const unit of units){%>
+    <%if(unit){%>
+        <h1><%= unit.name%></h1>
+    <%}%>
+<%}%>

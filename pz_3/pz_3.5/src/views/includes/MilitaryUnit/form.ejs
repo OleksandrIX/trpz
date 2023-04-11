@@ -1,0 +1,15 @@
+<form class="create-form p-5" action="/military-units/create" method="post"
+      onsubmit="return validateForm('<%- names %>')">
+    <div>
+        <label for="name" class="">Номер в/ч:</label><br>
+        <input id="name" name="name" class="input" required minlength="5" autofocus maxlength="5" type="text"
+               placeholder="Номер в/ч">
+    </div>
+    <div>
+        <label for="location" class="">Місто де знаходиться в/ч:</label><br>
+        <input id="location" name="location" class="input" required minlength="3" type="text" placeholder="Місто">
+    </div>
+
+    <input type="submit" class="button button-add" value="Додати">
+    <input type="button" class="button button-back" value="Назад" onclick="history.back();">
+</form>

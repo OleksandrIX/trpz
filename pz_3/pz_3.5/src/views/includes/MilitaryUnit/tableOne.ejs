@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/datatables/css/jquery.dataTables.css"/>
+<script src="/jquery/jquery.js"></script>
+
+<table id="military-unit-table" class="custom-table">
+    <thead>
+    <tr>
+        <th class="head-cell text-center">Номер в/ч</th>
+        <th class="head-cell text-center">Місто де знаходиться в/ч</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% militaryUnits.forEach((militaryUnit) =>{ %>
+        <tr>
+            <td class="body-cell"><input type="hidden" value="<%= militaryUnit.id %>"><%= militaryUnit.name %></td>
+            <td class="body-cell"><input type="hidden" value="<%= militaryUnit.location %>"><%= militaryUnit.location %></td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>
+
+<script src="/datatables/jquery/jquery.dataTables.js"></script>
+<script src="/public/js/MilitaryUnit/tableOne.js"></script>

@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.main {
+    height: 92vh;
+}
+
+.button {
+    padding: 15px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 10px;
+    background-color: rgb(165, 42, 42);
+    color: white;
+}
+
+.button:hover {
+    background-color: rgba(165, 42, 42, 0.8);
+}
+
+.action{
+    border: 0;
+    background: white;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.action:hover{
+    background: rgba(232, 232, 232, 0.7);
+}

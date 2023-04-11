@@ -1,0 +1,30 @@
+{
+  "name": "pz_3.5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start-pz35": "node app.js",
+    "dev-pz35": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Oleksandr",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "datatables.net-dt": "^1.13.4",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "ejs-mate": "^4.0.0",
+    "express": "^4.18.2",
+    "jquery": "^3.6.4",
+    "mongodb": "^5.1.0",
+    "mongoose": "^7.0.1",
+    "mysql2": "^3.2.0",
+    "sequelize": "^6.29.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
