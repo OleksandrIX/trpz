@@ -12,10 +12,25 @@
     </button>
 </div>
 
-<h2 class="mb-3">Система обліку особового складу в в/ч: <%= militaryUnit.name %></h2>
+<h2 class="mb-3 mt-3 position-absolute top-0">Система обліку особового складу в в/ч: <%= militaryUnit.name %></h2>
 
-<%for(const unit of units){%>
-    <%if(unit){%>
-        <h1><%= unit.name%></h1>
-    <%}%>
-<%}%>
+<div class="units">
+    <% for(const unit of units){ %>
+        <% if(unit){ %>
+            <div class="unit">
+                <h1 class="name-unit"><%= unit.name %>: </h1>
+                <% if(unit.servicemans){ %>
+                    <% const servicemans = {id: unit.id, servicemans: unit.servicemans}; %>
+                    <%- include('../../includes/Serviceman/table.ejs', servicemans) %>
+                    <a href="/military-units/<%= militaryUnit.id %>/units/<%= unit.id %>/servicemans/create" class="button text-decoration-none text-white">Додати в/с</a>
+                <% } %>
+
+                <% if(unit.children){ %>
+                    <% const units = {id: unit.id, units: unit.children}; %>
+                    <%- include('../../includes/Unit/table.ejs',units) %>
+                    <a href="/military-units/<%= militaryUnit.id %>/units/<%= unit.id %>/units/create" class="button text-decoration-none text-white">Додати підрозділ</a>
+                <% } %>
+            </div>
+        <% } %>
+    <% } %>
+</div>

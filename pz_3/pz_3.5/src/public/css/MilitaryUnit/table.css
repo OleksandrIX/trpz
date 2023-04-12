@@ -1,5 +1,5 @@
 .dataTables_wrapper{
-    width: 800px;
+    /*width: 800px;*/
 }
 
 .head-cell {
@@ -19,7 +19,11 @@
     background-color: rgb(128, 128, 128, 0.8);
 }
 
-.body-cell, .head-cell {
+.td-action{
+    background-color: rgb(128, 128, 128);
+}
+
+.body-cell, .head-cell, .td-action {
     border: 5px solid white;
     padding: 20px;
     font-size: 20px;

@@ -1,7 +1,7 @@
-module.exports = (MongoService) => {
+module.exports = ({ServicemanService}) => {
     const createServiceman = async (servicemanData) => {
         try {
-            const serviceman = await MongoService.createServiceman(servicemanData);
+            const serviceman = await ServicemanService.createServiceman(servicemanData);
             console.log('Unit added successfully.');
             return serviceman;
         } catch (error) {
@@ -12,7 +12,7 @@ module.exports = (MongoService) => {
 
     const findAllServicemans = async () => {
         try {
-            return MongoService.findAllServicemans();
+            return ServicemanService.findAllServicemans();
         } catch (error) {
             console.log('Error: ', error.message);
             throw new Error('Error when search servicemans.');
@@ -21,7 +21,7 @@ module.exports = (MongoService) => {
 
     const findServicemanById = async (id) => {
         try {
-            return MongoService.findServicemanById(id)
+            return ServicemanService.findServicemanById(id)
         } catch (error) {
             console.log('Error: ', error.message);
             throw new Error('Error when search serviceman.');

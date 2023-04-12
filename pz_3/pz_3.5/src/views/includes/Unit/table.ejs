@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="/datatables/css/jquery.dataTables.css"/>
+<script src="/jquery/jquery.js"></script>
+
+<table id="unit-<%= id %>">
+    <thead>
+    <tr>
+        <th class="head-cell text-center">Назва</th>
+        <th class="head-cell text-center">Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% units.units.forEach((unit)=>{ %>
+        <tr>
+            <td class="body-cell"><%= unit.name %></td>
+            <td class="td-action">
+                <div class="d-flex justify-content-center gap-5">
+                    <button class="action">
+                        <%- include('../components/actions/edit.ejs') %>
+                    </button>
+                    <button class="action">
+                        <%- include('../components/actions/delete.ejs') %>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $(`#unit-<%= id %>`).DataTable({
+            pageLength: 5,
+            lengthMenu: [5, 10, 20, 50, 100],
+            lengthChange: false,
+            language: {
+                search: "Пошук:",
+                infoFiltered: "",
+                zeroRecords: "Відповідних підрозділів не знайдено",
+                lengthMenu: "Відображати _MENU_ записів на сторінці",
+                emptyTable: "У вкладці немає підрозділів",
+                info: "Показано від _START_ до _END_ з _TOTAL_ записів",
+                infoEmpty: "Показано від 0 до 0 з 0 записів",
+                paginate: {
+                    previous: "Попередня",
+                    next: "Наступна",
+                }
+            },
+        });
+    });
+</script>
+
+<script src="/datatables/jquery/jquery.dataTables.js"></script>

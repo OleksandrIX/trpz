@@ -11,6 +11,11 @@ module.exports = () => {
             ref: "units",
             default: null,
         },
+        children: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "units",
+            default: [],
+        }],
         servicemans: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "servicemans",

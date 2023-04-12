@@ -3,4 +3,39 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.units{
+    width: 92%;
+    position: absolute;
+    left: 60px;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.unit:last-child{
+    margin-bottom: 20px;
+}
+
+.unit{
+    padding: 20px;
+    border: 3px solid #e6e6e6;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px,
+    rgba(0, 0, 0, 0.12) 0 -12px 30px,
+    rgba(0, 0, 0, 0.12) 0 4px 6px,
+    rgba(0, 0, 0, 0.17) 0 12px 13px,
+    rgba(0, 0, 0, 0.09) 0 -3px 5px;
+}
+
+.name-unit{
+    background: #eac917;
+    color: white;
+    padding: 5px;
+    border-radius: 100px;
 }

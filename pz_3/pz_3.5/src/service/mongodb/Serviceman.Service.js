@@ -15,10 +15,19 @@ module.exports = (ServicemanRepo) => {
         }
     };
 
+    const findAllServicemansById = async (IDs) => {
+        const servicemans = [];
+        for (const id of IDs) {
+            const serviceman = await ServicemanRepo.findById(id);
+            servicemans.push(serviceman);
+        }
+        return servicemans;
+    };
 
     return Object.freeze({
         createServiceman,
         findAllServicemans,
         findServicemanById,
+        findAllServicemansById,
     });
 };

@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="/datatables/css/jquery.dataTables.css"/>
+<script src="/jquery/jquery.js"></script>
+
+<style>
+    #servicemans-<%= id%>_wrapper {
+        width: 1000px;
+    }
+</style>
+
+<table id="servicemans-<%= id %>">
+    <thead>
+    <tr>
+        <th class="head-cell text-center">Прізвище</th>
+        <th class="head-cell text-center">Ім'я</th>
+        <th class="head-cell text-center">По батькові</th>
+        <th class="head-cell text-center">Дата народження</th>
+        <th class="head-cell text-center">Військове звання</th>
+        <th class="head-cell text-center">Посада</th>
+        <th class="head-cell text-center">Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% servicemans.servicemans.forEach((serviceman)=>{ %>
+        <tr>
+            <td class="body-cell"><%= serviceman.last_name %></td>
+            <td class="body-cell"><%= serviceman.first_name %></td>
+            <td class="body-cell"><%= serviceman.middle_name %></td>
+            <td class="body-cell"><%= serviceman.birth_date %></td>
+            <td class="body-cell"><%= serviceman.rank %></td>
+            <td class="body-cell"><%= serviceman.position %></td>
+            <td class="td-action">
+                <div class="d-flex justify-content-center gap-1">
+                    <button class="action">
+                        <%- include('../components/actions/edit.ejs') %>
+                    </button>
+                    <button class="action">
+                        <%- include('../components/actions/delete.ejs') %>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    <% }) %>
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $(`#servicemans-<%= id %>`).DataTable({
+            pageLength: 5,
+            lengthMenu: [5, 10, 20, 50, 100],
+            language: {
+                search: "Пошук:",
+                infoFiltered: "",
+                zeroRecords: "Відповідних в/с не знайдено",
+                lengthMenu: "Відображати _MENU_ записів на сторінці",
+                emptyTable: "У вкладці немає в/ч",
+                info: "Показано від _START_ до _END_ з _TOTAL_ записів",
+                infoEmpty: "Показано від 0 до 0 з 0 записів",
+                paginate: {
+                    previous: "Попередня",
+                    next: "Наступна",
+                }
+            },
+        });
+    });
+</script>
+
+<script src="/datatables/jquery/jquery.dataTables.js"></script>

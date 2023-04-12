@@ -27,11 +27,11 @@ body {
 
 .action{
     border: 0;
-    background: white;
+    background-color: rgb(128, 128, 128);
     cursor: pointer;
     border-radius: 100%;
 }
 
 .action:hover{
-    background: rgba(232, 232, 232, 0.7);
+    background: rgba(232, 232, 232, 0.2);
 }

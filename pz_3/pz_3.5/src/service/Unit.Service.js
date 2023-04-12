@@ -1,7 +1,7 @@
-module.exports = (MongoService) => {
+module.exports = ({UnitService}) => {
     const createUnit = async (unitData) => {
         try {
-            const unit = await MongoService.createUnit(unitData);
+            const unit = await UnitService.createUnit(unitData);
             console.log('Unit added successfully.');
             return unit;
         } catch (error) {
@@ -12,7 +12,7 @@ module.exports = (MongoService) => {
 
     const findAllUnits = async () => {
         try {
-            return MongoService.findAllUnits();
+            return UnitService.findAllUnits();
         } catch (error) {
             console.log('Error: ', error.message);
             throw new Error('Error when search units.');
@@ -21,7 +21,7 @@ module.exports = (MongoService) => {
 
     const findUnitById = async (id) => {
         try {
-            return MongoService.findUnitById(id)
+            return UnitService.findUnitById(id)
         } catch (error) {
             console.log('Error: ', error.message);
             throw new Error('Error when search unit.');
@@ -30,7 +30,7 @@ module.exports = (MongoService) => {
 
     const findAllUnitsById = async (IDs) => {
         try {
-            return MongoService.findAllUnitsById(IDs);
+            return UnitService.findAllUnitsById(IDs);
         } catch (error) {
             console.log('Error: ', error.message);
             throw new Error('Error when search units.');
