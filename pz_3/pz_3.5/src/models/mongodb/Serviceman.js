@@ -19,7 +19,7 @@ module.exports = () => {
             required: true,
         },
         birth_date: {
-            type: Date,
+            type: String,
             required: true,
         },
         position: {

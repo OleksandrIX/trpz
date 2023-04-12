@@ -40,16 +40,11 @@ const getMilitaryUnitById = async (request, response, next) => {
         const {id} = request.params;
         if (!(/^\D+$/g).test(id)) {
             const militaryUnit = await MilitaryUnitService.getUnitsOfMilitaryUnit(id);
-
-            if (militaryUnit?.status === 404) {
-                notFoundHandler(request, response);
-            }else {
-                response.render('pages/MilitaryUnit/one.ejs', {
-                    title: `Військова частина: ${militaryUnit.name}`,
-                    militaryUnit,
-                    units: militaryUnit.units
-                });
-            }
+            response.render('pages/MilitaryUnit/one.ejs', {
+                title: `Військова частина: ${militaryUnit.name}`,
+                militaryUnit,
+                units: militaryUnit.units
+            });
         } else {
             next();
         }

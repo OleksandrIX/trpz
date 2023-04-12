@@ -90,19 +90,15 @@ module.exports = ({MilitaryUnitService, UnitService, ServicemanService}) => {
     };
 
     const createMapUnitToChildrenUnit = async (unitId, childrenUnits) => {
-        const map = {};
-        const unit = await UnitService.findUnitById(unitId);
-        const children = await UnitService.findAllUnitsById(childrenUnits);
-        map.units = children;
-        return map;
+        return {
+            units: await UnitService.findAllUnitsById(childrenUnits)
+        };
     };
 
     const createMapUnitToServicemans = async (unitId, arrayServicemans) => {
-        const map = {};
-        const unit = await UnitService.findUnitById(unitId);
-        const servicemans = await ServicemanService.findAllServicemansById(arrayServicemans);
-        map.servicemans = servicemans;
-        return map;
+        return {
+            servicemans: await ServicemanService.findAllServicemansById(arrayServicemans)
+        };
     };
 
     return Object.freeze({

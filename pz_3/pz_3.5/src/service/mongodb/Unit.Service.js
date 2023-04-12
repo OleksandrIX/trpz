@@ -24,11 +24,15 @@ module.exports = (UnitRepo) => {
         return units;
     };
 
+    const addServicemanInUnit = async (id, servicemanId) => {
+        return UnitRepo.addServiceman(id, servicemanId);
+    };
 
     return Object.freeze({
         createUnit,
         findAllUnits,
         findUnitById,
         findAllUnitsById,
+        addServicemanInUnit,
     });
 };

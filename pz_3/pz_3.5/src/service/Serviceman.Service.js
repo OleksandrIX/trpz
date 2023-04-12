@@ -2,11 +2,11 @@ module.exports = ({ServicemanService}) => {
     const createServiceman = async (servicemanData) => {
         try {
             const serviceman = await ServicemanService.createServiceman(servicemanData);
-            console.log('Unit added successfully.');
+            console.log('Serviceman added successfully.');
             return serviceman;
         } catch (error) {
             console.log('Error: ', error.message);
-            throw new Error('Error when adding unit.');
+            throw new Error('Error when adding serviceman.');
         }
     };
 

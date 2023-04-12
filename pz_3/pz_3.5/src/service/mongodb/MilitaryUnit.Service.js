@@ -12,11 +12,7 @@ module.exports = (MilitaryUnitRepo) => {
     };
 
     const findMilitaryUnitById = async (id) => {
-        try {
-            return MilitaryUnitRepo.findById(id);
-        } catch (error) {
-            return {status: 404};
-        }
+        return MilitaryUnitRepo.findById(id);
     };
 
     const findAllMilitaryUnitsName = async () => {

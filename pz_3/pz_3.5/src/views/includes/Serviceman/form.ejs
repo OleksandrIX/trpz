@@ -1,0 +1,73 @@
+<form class="create-form p-4 mt-4"
+      action="/military-units/<%= militaryUnitId %>/units/<%= unitId %>/servicemans/create" method="post">
+    <div>
+        <label for="last_name">Прізвище:</label><br>
+        <input id="last_name"
+               class="input"
+               name="last_name"
+               required minlength="3" maxlength="15" autofocus
+               type="text"
+               placeholder="Шевченко">
+    </div>
+
+    <div>
+        <label for="first_name">Ім'я:</label><br>
+        <input id="first_name"
+               class="input"
+               name="first_name"
+               required minlength="2" maxlength="15"
+               type="text"
+               placeholder="Олександр">
+    </div>
+
+    <div>
+        <label for="middle_name">По батькові:</label><br>
+        <input id="middle_name"
+               class="input"
+               name="middle_name"
+               required minlength="5" maxlength="15"
+               type="text"
+               placeholder="Олександрович">
+    </div>
+
+    <div>
+        <label for="birth_date">Дата народження:</label><br>
+        <input id="birth_date"
+               class="input"
+               name="birth_date"
+               required minlength="10" maxlength="10"
+               type="text"
+               placeholder="2023-01-01">
+    </div>
+
+    <div>
+        <label for="rank">Військове звання:</label><br>
+        <input id="rank"
+               class="input"
+               name="rank"
+               required minlength="4" maxlength="20"
+               type="text"
+               placeholder="солдат">
+    </div>
+
+    <div>
+        <label for="position">Посада:</label><br>
+        <input id="position"
+               class="input"
+               name="position"
+               required minlength="3"
+               type="text"
+               placeholder="курсант">
+    </div>
+
+    <input type="hidden" id="url" name="url">
+
+    <input type="submit" class="button button-add" value="Додати">
+    <input type="button" class="button button-back" value="Назад" onclick="history.back();">
+</form>
+
+<script src="/public/js/Serviceman/validateForm.js"></script>
+<script>
+    const url = document.getElementById("url");
+    url.value = document.referrer;
+</script>

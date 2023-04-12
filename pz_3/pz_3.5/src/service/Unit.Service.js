@@ -37,10 +37,20 @@ module.exports = ({UnitService}) => {
         }
     };
 
+    const addServicemanInUnit = async (id, servicemanId) => {
+        try {
+            return UnitService.addServicemanInUnit(id, servicemanId);
+        } catch (error) {
+            console.log('Error: ', error.message);
+            throw new Error('Error when adding serviceman in unit.');
+        }
+    };
+
     return Object.freeze({
         createUnit,
         findAllUnits,
         findUnitById,
         findAllUnitsById,
+        addServicemanInUnit,
     });
 };

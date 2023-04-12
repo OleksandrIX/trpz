@@ -11,9 +11,17 @@ module.exports = (Unit, Id) => {
         return Unit.findOne({_id: id});
     };
 
+    const addServiceman = (id, servicemanId) => {
+        return Unit.findOneAndUpdate(
+            {_id: id},
+            {$push: {servicemans: servicemanId}},
+        );
+    }
+
     return Object.freeze({
         create,
         findAll,
         findById,
+        addServiceman,
     });
 };

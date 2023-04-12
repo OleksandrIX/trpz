@@ -18,18 +18,27 @@
     <% for(const unit of units){ %>
         <% if(unit){ %>
             <div class="unit">
-                <h1 class="name-unit"><%= unit.name %>: </h1>
+                <h1 class="name-unit"><%= unit.name %></h1>
                 <% if(unit.servicemans){ %>
                     <% const servicemans = {id: unit.id, servicemans: unit.servicemans}; %>
                     <%- include('../../includes/Serviceman/table.ejs', servicemans) %>
-                    <a href="/military-units/<%= militaryUnit.id %>/units/<%= unit.id %>/servicemans/create" class="button text-decoration-none text-white">Додати в/с</a>
                 <% } %>
 
                 <% if(unit.children){ %>
                     <% const units = {id: unit.id, units: unit.children}; %>
                     <%- include('../../includes/Unit/table.ejs',units) %>
-                    <a href="/military-units/<%= militaryUnit.id %>/units/<%= unit.id %>/units/create" class="button text-decoration-none text-white">Додати підрозділ</a>
                 <% } %>
+
+                <% if(unit.children === undefined && unit.servicemans === undefined){ %>
+                    <h1 class="pt-3 empty-unit">Цей підрозділ пустий</h1>
+                <% } %>
+
+                <div class="group-add-button">
+                    <a href="/military-units/<%= militaryUnit.id %>/units/<%= unit.id %>/servicemans/create"
+                       class="button text-decoration-none text-white">Додати в/с</a>
+                    <a href="/military-units/<%= militaryUnit.id %>/units/<%= unit.id %>/units/create"
+                       class="button text-decoration-none text-white">Додати підрозділ</a>
+                </div>
             </div>
         <% } %>
     <% } %>
