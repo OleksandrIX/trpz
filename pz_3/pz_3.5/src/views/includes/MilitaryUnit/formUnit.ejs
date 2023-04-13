@@ -1,19 +1,10 @@
-<form class="create-form p-5"
-      action="/military-units/<%= militaryUnitId %>/units/<%= unitId %>/units/create"
-      method="post">
+<form class="create-form p-5" action="/military-units/<%= id %>/units/create" method="post">
     <div>
         <label for="name" class="">Назва підрозділу</label><br>
         <input id="name" name="name" class="input" required autofocus minlength="3" type="text"
                placeholder="Назва підрозділу">
     </div>
 
-    <input type="hidden" id="url" name="url">
-
     <input type="submit" class="button button-add" value="Додати">
     <input type="button" class="button button-back" value="Назад" onclick="history.back();">
 </form>
-
-<script>
-    const url = document.getElementById("url");
-    url.value = document.referrer;
-</script>

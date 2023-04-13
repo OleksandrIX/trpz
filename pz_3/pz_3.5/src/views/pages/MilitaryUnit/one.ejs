@@ -23,7 +23,7 @@
                     <% const servicemans = {id: unit.id, servicemans: unit.servicemans}; %>
                     <%- include('../../includes/Serviceman/table.ejs', servicemans) %>
                 <% } %>
-
+                <br>
                 <% if(unit.children){ %>
                     <% const units = {id: unit.id, units: unit.children}; %>
                     <%- include('../../includes/Unit/table.ejs',units) %>

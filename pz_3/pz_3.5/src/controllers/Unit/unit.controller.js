@@ -1,11 +1,15 @@
-const {MilitaryUnitService, UnitService} = require("../../service");
+const {UnitService} = require("../../service");
 const {internalServerErrorHandler} = require("../error/error.controller");
+
 const getUnitCreate = (request, response) => {
     try {
-        const id = request.baseUrl.split("/")[2];
+        const url = request.originalUrl.split("/");
+        const unitId = url[url.length-3];
+        const militaryUnitId = url[2];
         response.render('pages/Unit/create.ejs', {
-            title: 'Додати підрозділ до в/ч',
-            id,
+            title: 'Створити підрозділ',
+            militaryUnitId,
+            unitId,
         });
     } catch (error) {
         internalServerErrorHandler(request, response);
@@ -14,11 +18,12 @@ const getUnitCreate = (request, response) => {
 
 const postUnitCreate = async (request, response) => {
     try {
-        const id = request.baseUrl.split("/")[2];
-        const {name} = request.body;
-        const unit = await UnitService.createUnit({name: name});
-        await MilitaryUnitService.addUnitInMilitaryUnit(id, unit._id);
-        response.status(201).redirect(`/military-units/${id}`);
+        const url = request.originalUrl.split("/");
+        const unitId = url[url.length-3];
+        const body = request.body;
+        const unit = await UnitService.createUnit({name: body.name, parent: unitId});
+        await UnitService.addUnitInUnit(unitId, unit._id);
+        response.status(201).redirect(body.url);
     } catch (error) {
         console.log(error)
         internalServerErrorHandler(request, response);

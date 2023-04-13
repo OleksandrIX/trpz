@@ -24,6 +24,10 @@ module.exports = (UnitRepo) => {
         return units;
     };
 
+    const addUnitInUnit = async (id, unitId) => {
+        return UnitRepo.addUnit(id, unitId);
+    };
+
     const addServicemanInUnit = async (id, servicemanId) => {
         return UnitRepo.addServiceman(id, servicemanId);
     };
@@ -34,5 +38,6 @@ module.exports = (UnitRepo) => {
         findUnitById,
         findAllUnitsById,
         addServicemanInUnit,
+        addUnitInUnit,
     });
 };

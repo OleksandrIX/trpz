@@ -1,5 +1,5 @@
-const {MilitaryUnitService} = require("../../service"),
-    {internalServerErrorHandler, notFoundHandler} = require("../error/error.controller");
+const {MilitaryUnitService, UnitService} = require("../../service"),
+    {internalServerErrorHandler} = require("../error/error.controller");
 
 const getMilitaryUnits = async (request, response) => {
     try {
@@ -66,10 +66,39 @@ const getMilitaryUnitsByLocation = async (request, response) => {
     }
 };
 
+const getUnitCreateInMilitaryUnit = (request, response) => {
+    try {
+        const url = request.originalUrl.split("/");
+        const id = url[2];
+        response.render('pages/MilitaryUnit/createUnit.ejs', {
+            title: 'Додати підрозділ до в/ч',
+            id,
+        });
+    } catch (error) {
+        internalServerErrorHandler(request, response);
+    }
+};
+
+const postUnitCreateInMilitaryUnit = async (request, response) => {
+    try {
+        const url = request.originalUrl.split("/");
+        const id = url[2];
+        const {name} = request.body;
+        const unit = await UnitService.createUnit({name: name});
+        await MilitaryUnitService.addUnitInMilitaryUnit(id, unit._id);
+        response.status(201).redirect(`/military-units/${id}`);
+    } catch (error) {
+        console.log(error)
+        internalServerErrorHandler(request, response);
+    }
+};
+
 module.exports = {
     getMilitaryUnits,
     getMilitaryUnitCreate,
     postMilitaryUnitCreate,
     getMilitaryUnitsByLocation,
     getMilitaryUnitById,
+    getUnitCreateInMilitaryUnit,
+    postUnitCreateInMilitaryUnit,
 };

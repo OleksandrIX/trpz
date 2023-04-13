@@ -5,6 +5,8 @@ const {
     postMilitaryUnitCreate,
     getMilitaryUnitById,
     getMilitaryUnitsByLocation,
+    getUnitCreateInMilitaryUnit,
+    postUnitCreateInMilitaryUnit,
 } = require("../../controllers/MilitaryUnit/militaryUnit.controller");
 
 router.get('/', getMilitaryUnits);
@@ -15,5 +17,9 @@ router.route('/create')
 
 router.get('/:id', getMilitaryUnitById);
 router.get('/:location', getMilitaryUnitsByLocation);
+
+router.route('/:id/units/create')
+    .get(getUnitCreateInMilitaryUnit)
+    .post(postUnitCreateInMilitaryUnit);
 
 module.exports = router;

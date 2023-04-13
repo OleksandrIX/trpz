@@ -4,7 +4,7 @@ const {
     postUnitCreate,
 } = require("../../controllers/Unit/unit.controller");
 
-router.route('/create')
+router.route('/:id/units/create')
     .get(getUnitCreate)
     .post(postUnitCreate);
 

@@ -21,7 +21,6 @@ const postServicemanCreate = async (request, response) => {
         const previousUrl = request.body.url;
         const url = request.baseUrl.split("/");
         const unitId = url[url.length - 2];
-        // const militaryUnitId = url[2];
         const servicemanData = request.body;
         const serviceman = await ServicemanService.createServiceman(servicemanData);
         await UnitService.addServicemanInUnit(unitId, serviceman._id);
