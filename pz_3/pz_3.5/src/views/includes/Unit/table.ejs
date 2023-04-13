@@ -14,10 +14,12 @@
             <td class="body-cell"><%= unit.name %></td>
             <td class="td-action">
                 <div class="d-flex justify-content-center gap-5">
-                    <button class="action">
+                    <button class="action edit" value="<%= unit.id %>-<%= id%>"
+                            onclick="editUnit(event)">
                         <%- include('../components/actions/edit.ejs') %>
                     </button>
-                    <button class="action">
+                    <button class="action delete" value="<%= unit.id %>-<%= id%>"
+                            onclick="deleteUnit(event)">
                         <%- include('../components/actions/delete.ejs') %>
                     </button>
                 </div>

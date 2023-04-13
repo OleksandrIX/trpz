@@ -20,7 +20,14 @@ module.exports = (MilitaryUnit, Id) => {
             {_id: id},
             {$push: {units: unitId}},
         );
-    }
+    };
+
+    const deleteUnit = (id, unitId) => {
+        return MilitaryUnit.findOneAndUpdate(
+            {_id: id},
+            {$pull: {units: unitId}},
+        );
+    };
 
     return Object.freeze({
         create,
@@ -28,5 +35,6 @@ module.exports = (MilitaryUnit, Id) => {
         findAllByLocation,
         findById,
         addUnit,
+        deleteUnit,
     });
 };

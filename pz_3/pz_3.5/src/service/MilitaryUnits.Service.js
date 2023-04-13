@@ -57,48 +57,11 @@ module.exports = ({MilitaryUnitService, UnitService, ServicemanService}) => {
 
     const getUnitsOfMilitaryUnit = async (id) => {
         try {
-            const militaryUnit = await MilitaryUnitService.findMilitaryUnitById(id);
-            const unitsOfMilitaryUnit = await UnitService.findAllUnitsById(militaryUnit.units);
-
-            const resultMilitaryUnit = {
-                id: militaryUnit._id,
-                name: militaryUnit.name,
-                location: militaryUnit.location,
-                units: [],
-            };
-
-            for (let unit of unitsOfMilitaryUnit) {
-                const resultUnit = {
-                    id: unit._id,
-                    name: unit.name,
-                    parent: unit.parent,
-                };
-                if (unit.children.length !== 0) {
-                    resultUnit.children = await createMapUnitToChildrenUnit(unit._id, unit.children);
-                }
-                if (unit.servicemans.length !== 0) {
-                    resultUnit.servicemans = await createMapUnitToServicemans(unit._id, unit.servicemans);
-                }
-                resultMilitaryUnit.units.push(resultUnit);
-            }
-
-            return resultMilitaryUnit;
+            return MilitaryUnitService.getUnitsOfMilitaryUnit(id);
         } catch (error) {
             console.log('Error: ', error.message);
             throw new Error('Error when getting units in military unit.');
         }
-    };
-
-    const createMapUnitToChildrenUnit = async (unitId, childrenUnits) => {
-        return {
-            units: await UnitService.findAllUnitsById(childrenUnits)
-        };
-    };
-
-    const createMapUnitToServicemans = async (unitId, arrayServicemans) => {
-        return {
-            servicemans: await ServicemanService.findAllServicemansById(arrayServicemans)
-        };
     };
 
     return Object.freeze({

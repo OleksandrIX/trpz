@@ -22,6 +22,7 @@ const postServicemanCreate = async (request, response) => {
         const url = request.baseUrl.split("/");
         const unitId = url[url.length - 2];
         const servicemanData = request.body;
+        servicemanData.unit = unitId;
         const serviceman = await ServicemanService.createServiceman(servicemanData);
         await UnitService.addServicemanInUnit(unitId, serviceman._id);
         response.status(201).redirect(previousUrl);
@@ -29,10 +30,26 @@ const postServicemanCreate = async (request, response) => {
         console.log(error)
         internalServerErrorHandler(request, response);
     }
+};
 
+const getServicemanEdit = async (request, response) => {
+    response.json({edit: true})
+};
+
+const deleteServiceman = async (request, response) => {
+    try {
+        const servicemanId = request.params.id;
+        await ServicemanService.deleteServiceman(servicemanId);
+        response.json({status: 200});
+    } catch (error) {
+        console.log(error)
+        internalServerErrorHandler(request, response);
+    }
 };
 
 module.exports = {
     getServicemanCreate,
     postServicemanCreate,
+    getServicemanEdit,
+    deleteServiceman,
 };

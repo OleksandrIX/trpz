@@ -26,6 +26,11 @@ module.exports = () => {
             type: String,
             required: true,
         },
+        unit:{
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: "units",
+        },
     });
 
     return mongoose.model("servicemans", ServicemanSchema);

@@ -1,8 +1,8 @@
 const {MongoRepositories} = require("../../repositories");
 
-const MilitaryUnitService = require("./MilitaryUnit.Service")(MongoRepositories.MilitaryUnitRepo);
-const UnitService = require("./Unit.Service")(MongoRepositories.UnitRepo);
-const ServicemanService = require("./Serviceman.Service")(MongoRepositories.ServicemanRepo);
+const MilitaryUnitService = require("./MilitaryUnit.Service")(MongoRepositories);
+const UnitService = require("./Unit.Service")(MongoRepositories);
+const ServicemanService = require("./Serviceman.Service")(MongoRepositories);
 
 module.exports = {
     MilitaryUnitService,

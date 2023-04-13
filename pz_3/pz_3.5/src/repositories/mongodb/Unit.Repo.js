@@ -11,6 +11,15 @@ module.exports = (Unit, Id) => {
         return Unit.findOne({_id: id});
     };
 
+    const findAllById = async (IDs)=>{
+        const units = [];
+        for (const id of IDs) {
+            const unit = await findById(id);
+            units.push(unit);
+        }
+        return units;
+    };
+
     const addUnit = (id, unitId) => {
         return Unit.findOneAndUpdate(
             {_id: id},
@@ -25,11 +34,33 @@ module.exports = (Unit, Id) => {
         );
     };
 
+    const deleteUnit = (id)=>{
+        return Unit.deleteOne({_id: id});
+    };
+
+    const deleteChildUnit = (id, unitId) => {
+        return Unit.findOneAndUpdate(
+            {_id: id},
+            {$pull: {children: unitId}},
+        );
+    };
+
+    const deleteServiceman = (id, servicemanId) => {
+        return Unit.findOneAndUpdate(
+            {_id: id},
+            {$pull: {servicemans: servicemanId}},
+        );
+    };
+
     return Object.freeze({
         create,
         findAll,
         findById,
         addServiceman,
         addUnit,
+        deleteUnit,
+        deleteChildUnit,
+        deleteServiceman,
+        findAllById,
     });
 };

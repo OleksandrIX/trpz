@@ -55,6 +55,15 @@ module.exports = ({UnitService}) => {
         }
     };
 
+    const deleteUnit = async (unitId, militaryUnitId) => {
+        try {
+            return UnitService.deleteUnit(unitId, militaryUnitId);
+        } catch (error) {
+            console.log('Error: ', error.message);
+            throw new Error('Error when deleting unit.');
+        }
+    }
+
     return Object.freeze({
         createUnit,
         findAllUnits,
@@ -62,5 +71,6 @@ module.exports = ({UnitService}) => {
         findAllUnitsById,
         addServicemanInUnit,
         addUnitInUnit,
+        deleteUnit,
     });
 };

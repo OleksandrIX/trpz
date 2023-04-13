@@ -28,9 +28,19 @@ module.exports = ({ServicemanService}) => {
         }
     };
 
+    const deleteServiceman = async (id)=>{
+        try {
+            return ServicemanService.deleteServiceman(id);
+        } catch (error) {
+            console.log('Error: ', error.message);
+            throw new Error('Error when deleting serviceman.');
+        }
+    };
+
     return Object.freeze({
         createServiceman,
         findAllServicemans,
-        findServicemanById
+        findServicemanById,
+        deleteServiceman,
     });
 };

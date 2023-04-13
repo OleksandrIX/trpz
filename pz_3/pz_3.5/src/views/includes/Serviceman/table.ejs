@@ -30,10 +30,12 @@
             <td class="body-cell"><%= serviceman.position %></td>
             <td class="td-action">
                 <div class="d-flex justify-content-center gap-1">
-                    <button class="action">
+                    <button class="action edit" value="<%= serviceman.id %>-<%= id%>"
+                            onclick="editServiceman(event)">
                         <%- include('../components/actions/edit.ejs') %>
                     </button>
-                    <button class="action">
+                    <button class="action delete" value="<%= serviceman.id %>-<%= id%>"
+                            onclick="deleteServiceman(event)">
                         <%- include('../components/actions/delete.ejs') %>
                     </button>
                 </div>

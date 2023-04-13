@@ -1,4 +1,4 @@
-module.exports = (ServicemanRepo) => {
+module.exports = ({ServicemanRepo, UnitRepo}) => {
     const createServiceman = async (servicemanData) => {
         return ServicemanRepo.create(servicemanData);
     };
@@ -15,19 +15,17 @@ module.exports = (ServicemanRepo) => {
         }
     };
 
-    const findAllServicemansById = async (IDs) => {
-        const servicemans = [];
-        for (const id of IDs) {
-            const serviceman = await ServicemanRepo.findById(id);
-            servicemans.push(serviceman);
-        }
-        return servicemans;
+    const deleteServiceman = async (id) => {
+        const serviceman = await ServicemanRepo.findById(id);
+        const unit = serviceman.unit;
+        await UnitRepo.deleteServiceman(unit, serviceman._id);
+        await ServicemanRepo.deleteServiceman(serviceman._id);
     };
 
     return Object.freeze({
         createServiceman,
         findAllServicemans,
         findServicemanById,
-        findAllServicemansById,
+        deleteServiceman,
     });
 };
