@@ -10,6 +10,15 @@ module.exports = ({UnitService}) => {
         }
     };
 
+    const updateUnit = async (id, unitData) => {
+        try {
+            return UnitService.updateUnit(id, unitData);
+        } catch (error) {
+            console.log('Error: ', error.message);
+            throw new Error('Error when updating unit.');
+        }
+    };
+
     const findAllUnits = async () => {
         try {
             return UnitService.findAllUnits();
@@ -62,15 +71,26 @@ module.exports = ({UnitService}) => {
             console.log('Error: ', error.message);
             throw new Error('Error when deleting unit.');
         }
-    }
+    };
+
+    const getUnitsAndServicemansInUnit = async (id) => {
+        try {
+            return UnitService.getUnitsAndServicemansInUnit(id);
+        } catch (error) {
+            console.log('Error: ', error.message);
+            throw new Error('Error when getting units and servicemans in unit.');
+        }
+    };
 
     return Object.freeze({
         createUnit,
+        updateUnit,
         findAllUnits,
         findUnitById,
         findAllUnitsById,
         addServicemanInUnit,
         addUnitInUnit,
         deleteUnit,
+        getUnitsAndServicemansInUnit,
     });
 };

@@ -9,9 +9,9 @@
     </tr>
     </thead>
     <tbody>
-    <% units.units.forEach((unit)=>{ %>
+    <% units.forEach((unit)=>{ %>
         <tr>
-            <td class="body-cell"><%= unit.name %></td>
+            <td class="body-cell name"><input type="hidden" value="<%= unit.id %>"><%= unit.name %></td>
             <td class="td-action">
                 <div class="d-flex justify-content-center gap-5">
                     <button class="action edit" value="<%= unit.id %>-<%= id%>"
@@ -53,3 +53,4 @@
 </script>
 
 <script src="/datatables/jquery/jquery.dataTables.js"></script>
+<script src="/public/js/Unit/table.js"></script>

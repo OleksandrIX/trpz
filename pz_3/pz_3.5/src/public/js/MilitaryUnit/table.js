@@ -16,9 +16,9 @@ $(document).ready(function () {
     });
 });
 
-const tableAll = document.getElementById("military-unit-table");
-const nameColumn = tableAll.querySelectorAll("td:nth-child(1)");
-const locationColumn = tableAll.querySelectorAll("td:nth-child(2)");
+const table = document.getElementById("military-unit-table");
+const nameColumn = table.querySelectorAll("td:nth-child(1)");
+const locationColumn = table.querySelectorAll("td:nth-child(2)");
 
 const nameClickHandler = (event) => {
     const {value} = event.target.children[0];

@@ -11,6 +11,20 @@ module.exports = (Serviceman, Id) => {
             unit,
         });
     };
+    const update = (id, {last_name, first_name, middle_name, rank, position, birth_date}) => {
+        return Serviceman.updateOne(
+            {_id: id},
+            {
+                last_name: last_name,
+                first_name: first_name,
+                middle_name: middle_name,
+                birth_date: birth_date,
+                rank: rank,
+                position: position,
+            }
+        );
+    };
+
 
     const findAll = () => {
         return Serviceman.find({});
@@ -35,6 +49,7 @@ module.exports = (Serviceman, Id) => {
 
     return Object.freeze({
         create,
+        update,
         findAll,
         findById,
         deleteServiceman,

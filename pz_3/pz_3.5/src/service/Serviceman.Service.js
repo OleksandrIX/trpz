@@ -10,6 +10,15 @@ module.exports = ({ServicemanService}) => {
         }
     };
 
+    const updateServiceman = async (id, servicemanData) => {
+        try {
+            return ServicemanService.updateServiceman(id, servicemanData);
+        } catch (error) {
+            console.log('Error: ', error.message);
+            throw new Error('Error when updating serviceman.');
+        }
+    };
+
     const findAllServicemans = async () => {
         try {
             return ServicemanService.findAllServicemans();
@@ -39,6 +48,7 @@ module.exports = ({ServicemanService}) => {
 
     return Object.freeze({
         createServiceman,
+        updateServiceman,
         findAllServicemans,
         findServicemanById,
         deleteServiceman,

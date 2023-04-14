@@ -1,0 +1,59 @@
+<% layout('layouts/Unit.ejs') -%>
+<link rel="stylesheet" href="/public/css/icon.css">
+<div class="back icon">
+    <button class="back-arrow icon"
+            onclick="history.back();">
+    </button>
+</div>
+
+<div class="add icon">
+    <button class="add-plus icon"
+            onclick="location.href = '/military-units/<%= militaryUnit._id %>/units/<%= unit?.id %>/units/create';">
+    </button>
+</div>
+
+<div class="mb-3 mt-3 position-absolute top-0 text-center">
+    <h2>Система обліку особового складу в в/ч: <%= militaryUnit.name %></h2>
+    <h1><%= unit?.name %></h1>
+</div>
+
+<div class="unit">
+    <% if(unit.servicemans !== []){ %>
+        <% const servicemans = {id: unit.id, servicemans: unit.servicemans}; %>
+        <%- include('../../includes/Serviceman/table.ejs', servicemans) %>
+    <% } else { %>
+        <h1 class="pt-3 empty-unit">Цей підрозділ пустий</h1>
+    <% } %>
+    <br>
+    <% if(unit.children !== []){ %>
+        <% const units = {id: unit.id, units: unit.children}; %>
+        <%- include('../../includes/Unit/table.ejs',units) %>
+    <% }else { %>
+        <h1 class="pt-3 empty-unit">Цей підрозділ пустий</h1>
+    <% } %>
+
+    <% if(unit.children === undefined && unit.servicemans === undefined){ %>
+        <h1 class="pt-3 empty-unit">Цей підрозділ пустий</h1>
+    <% } %>
+
+    <div class="group-add-button">
+        <a href="/military-units/<%= militaryUnit._id %>/units/<%= unit.id %>/servicemans/create"
+           class="button text-decoration-none text-white">Додати в/с</a>
+    </div>
+</div>
+
+<script>
+    const td = document.querySelectorAll(".name");
+
+    const clickUnitNameHandler = (event) => {
+        const url = location.href.split('/');
+        const militaryUnitId = url[url.indexOf("military-units") + 1];
+        const id = event.target.children[0].value;
+        location.href = `/military-units/${militaryUnitId}/units/${id}`;
+    };
+
+    for (const tdElement of td) {
+        tdElement.addEventListener("click", clickUnitNameHandler);
+    }
+</script>
+<script src="/public/js/buttons.js"></script>

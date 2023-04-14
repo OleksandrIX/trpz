@@ -1,4 +1,4 @@
-module.exports = ({MilitaryUnitService, UnitService, ServicemanService}) => {
+module.exports = ({MilitaryUnitService, UnitService}) => {
     const createMilitaryUnit = async (militaryUnitData) => {
         try {
             const militaryUnit = await MilitaryUnitService.createMilitaryUnit(militaryUnitData);
@@ -9,6 +9,16 @@ module.exports = ({MilitaryUnitService, UnitService, ServicemanService}) => {
             throw new Error('Error when adding military unit.');
         }
     };
+
+    const updateMilitaryUnit = async (id, militaryUnitData) => {
+        try {
+            return MilitaryUnitService.updateMilitaryUnit(id, militaryUnitData);
+        } catch (error) {
+            console.log('Error: ', error.message);
+            throw new Error('Error when updating military unit.');
+        }
+    };
+
 
     const findAllMilitaryUnits = async () => {
         try {
@@ -64,13 +74,27 @@ module.exports = ({MilitaryUnitService, UnitService, ServicemanService}) => {
         }
     };
 
+    const deleteMilitaryUnit = async (id) => {
+        try {
+            const units = await MilitaryUnitService.deleteMilitaryUnit(id);
+            for (const unit of units) {
+                await UnitService.deleteUnit(unit, id);
+            }
+        } catch (error) {
+            console.log('Error: ', error.message);
+            throw new Error('Error when deleting military unit.');
+        }
+    };
+
     return Object.freeze({
         createMilitaryUnit,
+        updateMilitaryUnit,
         findAllMilitaryUnits,
         findAllMilitaryUnitsByLocation,
         findMilitaryUnitById,
         findAllMilitaryUnitsName,
         addUnitInMilitaryUnit,
         getUnitsOfMilitaryUnit,
+        deleteMilitaryUnit,
     });
 };

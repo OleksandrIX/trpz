@@ -3,6 +3,14 @@ module.exports = (Unit, Id) => {
         return Unit.create({_id: new Id(), name, parent});
     };
 
+    const update = (id, {name}) => {
+        return Unit.updateOne(
+            {_id: id},
+            {name: name}
+        );
+    };
+
+
     const findAll = () => {
         return Unit.find({});
     };
@@ -54,6 +62,7 @@ module.exports = (Unit, Id) => {
 
     return Object.freeze({
         create,
+        update,
         findAll,
         findById,
         addServiceman,

@@ -88,9 +88,53 @@ const postUnitCreateInMilitaryUnit = async (request, response) => {
         await MilitaryUnitService.addUnitInMilitaryUnit(id, unit._id);
         response.status(201).redirect(`/military-units/${id}`);
     } catch (error) {
-        console.log(error)
         internalServerErrorHandler(request, response);
     }
+};
+
+const getMilitaryUnitEdit = async (request, response) => {
+    try {
+        const id = request.params.id;
+        const militaryUnit = await MilitaryUnitService.findMilitaryUnitById(id);
+        let arrayNamesMilitaryUnits = await MilitaryUnitService.findAllMilitaryUnitsName();
+
+        let nameIndex = arrayNamesMilitaryUnits.indexOf(militaryUnit.name);
+        if (nameIndex > -1) {
+            arrayNamesMilitaryUnits[nameIndex] = "";
+        }
+        response.render('pages/MilitaryUnit/edit.ejs', {
+            title: 'Додати в/ч',
+            name: militaryUnit.name,
+            location: militaryUnit.location,
+            names: arrayNamesMilitaryUnits,
+            id: militaryUnit.id,
+        });
+    } catch (error) {
+        internalServerErrorHandler(request, response);
+    }
+};
+
+const postMilitaryUnitEdit = async (request, response) => {
+    try {
+        const id = request.params.id;
+        const militaryUnitData = request.body;
+        await MilitaryUnitService.updateMilitaryUnit(id, militaryUnitData);
+        response.status(201).redirect('/military-units');
+    } catch (error) {
+        internalServerErrorHandler(request, response);
+    }
+
+};
+
+const deleteMilitaryUnit = async (request, response) => {
+    try {
+        const id = request.params.id;
+        await MilitaryUnitService.deleteMilitaryUnit(id);
+        response.json({status: 200});
+    } catch (error) {
+        internalServerErrorHandler(request, response);
+    }
+
 };
 
 module.exports = {
@@ -101,4 +145,7 @@ module.exports = {
     getMilitaryUnitById,
     getUnitCreateInMilitaryUnit,
     postUnitCreateInMilitaryUnit,
+    getMilitaryUnitEdit,
+    postMilitaryUnitEdit,
+    deleteMilitaryUnit,
 };

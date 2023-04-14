@@ -1,0 +1,26 @@
+<form class="create-form p-5" action="/military-units/<%= id%>/edit" method="post"
+      onsubmit="return validateForm('<%- names %>')">
+    <div>
+        <label for="name" class="">Номер в/ч:</label><br>
+        <input id="name"
+               class="input"
+               name="name"
+               value="<%= name%>"
+               required minlength="5" autofocus maxlength="5"
+               type="text"
+               placeholder="Номер в/ч">
+    </div>
+    <div>
+        <label for="location" class="">Місто де знаходиться в/ч:</label><br>
+        <input id="location"
+               class="input"
+               name="location"
+               value="<%= location%>"
+               required minlength="3"
+               type="text"
+               placeholder="Місто">
+    </div>
+
+    <input type="submit" class="button button-add" value="Редагувати">
+    <input type="button" class="button button-back" value="Назад" onclick="history.back();">
+</form>

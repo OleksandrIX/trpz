@@ -3,6 +3,10 @@ module.exports = ({MilitaryUnitRepo, UnitRepo, ServicemanRepo}) => {
         return UnitRepo.create(unitData);
     };
 
+    const updateUnit = async (id, unitData) => {
+        return UnitRepo.update(id, unitData);
+    };
+
     const findAllUnits = async () => {
         return UnitRepo.findAll();
     };
@@ -86,12 +90,46 @@ module.exports = ({MilitaryUnitRepo, UnitRepo, ServicemanRepo}) => {
         }
     };
 
+    const getUnitsAndServicemansInUnit = async (id) => {
+        const unit = await UnitRepo.findById(id);
+        const unitsOfUnit = await UnitRepo.findAllById(unit.children);
+        const servicemansOfUnit = await ServicemanRepo.findAllById(unit.servicemans);
+
+        const resultUnit = {
+            id: unit._id,
+            name: unit.name,
+            parent: unit.parent,
+            children: [],
+            servicemans: servicemansOfUnit,
+        };
+
+        for (const childUnit of unitsOfUnit) {
+            const resultChildUnit = {
+                id: childUnit._id,
+                name: childUnit.name,
+                parent: childUnit.parent,
+            };
+
+            if (childUnit.children.length !== 0) {
+                resultChildUnit.children = await UnitRepo.findAllById(childUnit.children);
+            }
+            if (childUnit.servicemans.length !== 0) {
+                resultChildUnit.servicemans = await ServicemanRepo.findAllById(childUnit.servicemans);
+            }
+            resultUnit.children.push(resultChildUnit);
+        }
+
+        return resultUnit;
+    };
+
     return Object.freeze({
         createUnit,
+        updateUnit,
         findAllUnits,
         findUnitById,
         addServicemanInUnit,
         addUnitInUnit,
         deleteUnit,
+        getUnitsAndServicemansInUnit,
     });
 };

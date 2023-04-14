@@ -7,17 +7,32 @@
     <tr>
         <th class="head-cell text-center">Номер в/ч</th>
         <th class="head-cell text-center">Місто де знаходиться в/ч</th>
+        <th class="head-cell text-center">Дії</th>
     </tr>
     </thead>
     <tbody>
     <% militaryUnits.forEach((militaryUnit) =>{ %>
         <tr>
             <td class="body-cell"><input type="hidden" value="<%= militaryUnit.id %>"><%= militaryUnit.name %></td>
-            <td class="body-cell"><input type="hidden" value="<%= militaryUnit.location %>"><%= militaryUnit.location %></td>
+            <td class="body-cell"><input type="hidden" value="<%= militaryUnit.location %>"><%= militaryUnit.location %>
+            </td>
+            <td class="td-action">
+                <div class="d-flex justify-content-center gap-1">
+                    <button class="action edit" value="<%= militaryUnit.id %>"
+                            onclick="editMilitaryUnit(event)">
+                        <%- include('../components/actions/edit.ejs') %>
+                    </button>
+                    <button class="action delete" value="<%= militaryUnit.id %>"
+                            onclick="deleteMilitaryUnit(event)">
+                        <%- include('../components/actions/delete.ejs') %>
+                    </button>
+                </div>
+            </td>
         </tr>
     <% }) %>
     </tbody>
 </table>
 
 <script src="/datatables/jquery/jquery.dataTables.js"></script>
-<script src="/public/js/MilitaryUnit/tableAll.js"></script>
+<script src="/public/js/MilitaryUnit/table.js"></script>
+<script src="/public/js/MilitaryUnit/buttons.js"></script>

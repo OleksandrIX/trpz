@@ -1,5 +1,6 @@
 function validateForm(names) {
     names = names.split(',');
+    console.log(names)
     const nameMilitaryUnit = document.forms[0]['name'];
 
     if (!/^А\d{4}$/g.test(nameMilitaryUnit.value)) {

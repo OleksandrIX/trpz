@@ -3,6 +3,16 @@ module.exports = (MilitaryUnit, Id) => {
         return MilitaryUnit.create({_id: new Id(), name, location});
     };
 
+    const update = (id, {name, location}) => {
+        return MilitaryUnit.updateOne(
+            {_id: id},
+            {
+                name: name,
+                location: location,
+            }
+        );
+    };
+
     const findAll = () => {
         return MilitaryUnit.find({});
     };
@@ -29,12 +39,18 @@ module.exports = (MilitaryUnit, Id) => {
         );
     };
 
+    const deleteMilitaryUnit = (id) => {
+        return MilitaryUnit.deleteOne({_id: id})
+    };
+
     return Object.freeze({
         create,
+        update,
         findAll,
         findAllByLocation,
         findById,
         addUnit,
         deleteUnit,
+        deleteMilitaryUnit,
     });
 };

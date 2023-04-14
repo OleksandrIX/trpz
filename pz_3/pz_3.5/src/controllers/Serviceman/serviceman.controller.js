@@ -7,7 +7,7 @@ const getServicemanCreate = (request, response) => {
         const militaryUnitId = url[2];
 
         response.render('pages/Serviceman/create.ejs', {
-            title: 'Додати в/ч до підрозділу',
+            title: 'Додати в/с до підрозділу',
             militaryUnitId,
             unitId,
         });
@@ -33,7 +33,35 @@ const postServicemanCreate = async (request, response) => {
 };
 
 const getServicemanEdit = async (request, response) => {
-    response.json({edit: true})
+    try {
+        const url = request.originalUrl.split("/");
+        const militaryUnitId = url[url.indexOf("military-units") + 1];
+        const unitId = url[url.indexOf("units") + 1];
+        const servicemanId = url[url.indexOf("servicemans") + 1];
+
+        const serviceman = await ServicemanService.findServicemanById(servicemanId);
+        response.render('pages/Serviceman/edit.ejs', {
+            title: 'Редагувати в/с',
+            serviceman,
+            militaryUnitId,
+            unitId,
+        });
+    } catch (error) {
+        internalServerErrorHandler(request, response);
+    }
+
+};
+
+const postServicemanEdit = async (request, response) => {
+    try {
+        const body = request.body;
+        const url = request.originalUrl.split("/");
+        const servicemanId = url[url.indexOf("servicemans") + 1];
+        await ServicemanService.updateServiceman(servicemanId, body);
+        response.status(201).redirect(body.url);
+    } catch (error) {
+        internalServerErrorHandler(request, response);
+    }
 };
 
 const deleteServiceman = async (request, response) => {
@@ -51,5 +79,6 @@ module.exports = {
     getServicemanCreate,
     postServicemanCreate,
     getServicemanEdit,
+    postServicemanEdit,
     deleteServiceman,
 };

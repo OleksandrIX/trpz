@@ -2,6 +2,9 @@ module.exports = ({ServicemanRepo, UnitRepo}) => {
     const createServiceman = async (servicemanData) => {
         return ServicemanRepo.create(servicemanData);
     };
+    const updateServiceman = async (id, servicemanData) => {
+        return ServicemanRepo.update(id, servicemanData);
+    };
 
     const findAllServicemans = async () => {
         return ServicemanRepo.findAll();
@@ -24,6 +27,7 @@ module.exports = ({ServicemanRepo, UnitRepo}) => {
 
     return Object.freeze({
         createServiceman,
+        updateServiceman,
         findAllServicemans,
         findServicemanById,
         deleteServiceman,
