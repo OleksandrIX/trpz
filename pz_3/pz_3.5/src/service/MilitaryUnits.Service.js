@@ -1,7 +1,10 @@
-module.exports = ({MilitaryUnitService, UnitService}) => {
+module.exports = ({MilitaryUnitService, UnitService}, MysqlService) => {
     const createMilitaryUnit = async (militaryUnitData) => {
         try {
             const militaryUnit = await MilitaryUnitService.createMilitaryUnit(militaryUnitData);
+            const id = militaryUnit._id;
+            const {name, location} = militaryUnit;
+            await MysqlService.createMilitaryUnit({id, name, location});
             console.log('Military unit added successfully.');
             return militaryUnit;
         } catch (error) {

@@ -20,7 +20,6 @@ function deleteMilitaryUnit(event){
         .catch((error) => {
             console.log(error);
         });
-
 }
 
 function editUnit(event) {

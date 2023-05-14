@@ -1,4 +1,4 @@
-const {connect, Schema, model} = require("mongoose");
+const {connect} = require("mongoose");
 const {mongodbConfig} = require("../../config/db.config");
 
 (async () => {
